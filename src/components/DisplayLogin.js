@@ -1,16 +1,21 @@
 import React from "react";
-import { setName } from "../actions";
+import { login } from "../actions";
 import { connect } from "react-redux";
 
 class DisplayLogin extends React.Component {
-  state = { name: "" };
+  state = {
+    name: "",
+    password: ""
+  };
 
   onSubmit = event => {
     event.preventDefault();
 
-    this.props.setName(this.state.name);
+    const { name, password } = this.state;
 
-    this.setState({ name: "" });
+    this.props.login({ name, password });
+
+    this.setState({ name: "", password: "" });
   };
 
   onChange = event => {
@@ -27,9 +32,9 @@ class DisplayLogin extends React.Component {
         <div>
           <form onSubmit={this.onSubmit}>
             <p>Name:</p>
-            <input type="text" onChange={this.onChange} />
+            <input type="text" value="name" onChange={this.onChange} />
             <p>Password:</p>
-            <input type="text" onChange={this.onChange} />
+            <input type="text" value="password" onChange={this.onChange} />
             <br />
             <button type="submit">Submit</button>
           </form>
@@ -40,7 +45,7 @@ class DisplayLogin extends React.Component {
 }
 
 const mapDispatchToProps = {
-  setName
+  login
 };
 
 export default connect(
