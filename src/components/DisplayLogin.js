@@ -1,9 +1,23 @@
 import React from "react";
+import { setName } from "../actions";
+import { connect } from "react-redux";
 
-export default class DisplayLogin extends React.Component {
-  onSubmit() {}
+class DisplayLogin extends React.Component {
+  state = { name: "" };
 
-  onChange() {}
+  onSubmit = event => {
+    event.preventDefault();
+
+    this.props.setName(this.state.name);
+
+    this.setState({ name: "" });
+  };
+
+  onChange = event => {
+    const { value } = event.target;
+
+    this.setState({ name: value });
+  };
 
   render() {
     return (
@@ -24,3 +38,12 @@ export default class DisplayLogin extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = {
+  setName
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(DisplayLogin);
