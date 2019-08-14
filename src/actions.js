@@ -1,3 +1,5 @@
+import * as request from "superagent";
+
 export const ALL_ROOMS = "ALL_ROOMS";
 
 export function allChannels(payload) {
@@ -7,11 +9,25 @@ export function allChannels(payload) {
   };
 }
 
-export const SET_NAME = "SET_NAME";
+export const JWT = "JWT";
 
-export function setName(payload) {
+function jwt(payload) {
   return {
-    type: SET_NAME,
+    type: JWT,
     payload
+  };
+}
+
+export function login(name, password) {
+  return function(dispatch) {
+    request
+      .post("/login")
+      .send({ name, password })
+      .then(response => {
+        // You may want to handle the case where the response is not the JWT
+        // in case the name or password were wrong
+        const action = jwt(response.body);
+        dispatch(action);
+      });
   };
 }
