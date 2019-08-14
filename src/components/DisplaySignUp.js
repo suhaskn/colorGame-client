@@ -1,6 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
 import * as request from "superagent";
+import { url } from "../constants";
 
 export default class DisplaySignUp extends React.Component {
   state = {
@@ -8,24 +8,25 @@ export default class DisplaySignUp extends React.Component {
     password: ""
   };
 
-  onSubmit(event) {
+  onSubmit = event => {
     event.preventDefault();
 
     const { name, password } = this.state;
 
     request
-      .post("/user")
+      .post(`${url}/user`)
       .send({ name, password })
       .then(response => {
         this.setState({ name: "", password: "" });
+        console.log("User added to database");
       });
-  }
+  };
 
-  onChange(event) {
-    const { name, password } = event.target;
+  onChange = event => {
+    const { value, name } = event.target;
 
-    this.setState({ name: name, password: password });
-  }
+    this.setState({ [name]: value });
+  };
 
   render() {
     return (
@@ -35,9 +36,21 @@ export default class DisplaySignUp extends React.Component {
         <div>
           <form onSubmit={this.onSubmit}>
             <p>Name:</p>
-            <input type="text" value="name" onChange={this.onChange} />
+            <input
+              type="text"
+              value={this.state.name}
+              placeholder="name"
+              name="name"
+              onChange={this.onChange}
+            />
             <p>Password:</p>
-            <input type="text" value="password" onChange={this.onChange} />
+            <input
+              type="password"
+              value={this.state.password}
+              placeholder="password"
+              name="password"
+              onChange={this.onChange}
+            />
             <br />
             <button type="submit">Submit</button>
           </form>

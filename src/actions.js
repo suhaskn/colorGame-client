@@ -1,4 +1,5 @@
 import * as request from "superagent";
+import { url } from "./constants";
 
 export const ALL_ROOMS = "ALL_ROOMS";
 
@@ -21,7 +22,7 @@ function jwt(payload) {
 export function login(name, password) {
   return function(dispatch) {
     request
-      .post("/login")
+      .post(`${url}/login`)
       .send({ name, password })
       .then(response => {
         // You may want to handle the case where the response is not the JWT
