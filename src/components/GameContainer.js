@@ -24,10 +24,11 @@ export default class GameContainer extends React.Component {
     return (
       <div>
         <h2>FAST!!! Pick the right color</h2>
+        <h3>Score: </h3>
 
         <div>
           <p id="p1" style={pStyle}>
-            {""}
+            {"yellow"}
           </p>
           <button onClick={this.handleClick}>RED</button>
           <button onClick={this.handleClick}>BLUE</button>

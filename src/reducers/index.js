@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-//import rooms from "./rooms";
-//import user from "./user";
+import rooms from "./rooms";
+import users from "./users";
 
 export default combineReducers({
-  // rooms,
-  //user
+  rooms,
+  users
 });
