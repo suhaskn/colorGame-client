@@ -1,5 +1,5 @@
 import { CORRECT } from "../actions";
-import {WRONG} from "../actions"
+import { WRONG } from "../actions"
 
 export default function rooms(state = {goodAnswer: [], wrongAnswer: []}, action = {}) {
   switch (action.type) {
