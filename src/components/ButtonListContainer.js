@@ -3,19 +3,23 @@ import { NavLink } from "react-router-dom";
 
 export default class ButtonListContainer extends Component {
   render() {
+    var style = {
+      padding: "10px",
+      fontWeight: "bold"
+    };
     return (
       <div style={{ flexDirection: "row" }}>
         <NavLink to="/signup">
-          <p>Sign Up</p>
+          <label style={style}>Sign Up</label>
         </NavLink>
         <NavLink to="/login">
-          <p>Log In</p>
+          <label style={style}>Log In</label>
         </NavLink>
         <NavLink to="/room">
-          <p>Rooms</p>
+          <label style={style}>Rooms</label>
         </NavLink>
         <NavLink to="/start">
-          <p>Start</p>
+          <label style={style}>Start</label>
         </NavLink>
       </div>
     );
