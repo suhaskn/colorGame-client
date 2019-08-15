@@ -25,10 +25,13 @@ export function login(name, password) {
       .post(`${url}/login`)
       .send({ name, password })
       .then(response => {
-        // You may want to handle the case where the response is not the JWT
-        // in case the name or password were wrong
         const action = jwt(response.body);
+        console.log(response.body);
         dispatch(action);
+      })
+      .catch(error => {
+        console.log("Something is wrong with the log in");
+        console.log(error);
       });
   };
 }

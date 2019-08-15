@@ -14,7 +14,7 @@ class DisplayLogin extends React.Component {
     const { name, password } = this.state;
 
     console.log("Name: ", name, " Password: ", password);
-    //this.props.login({ name, password });
+    this.props.login(name, password);
 
     this.setState({ name: "", password: "" });
   };
