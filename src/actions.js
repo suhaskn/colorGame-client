@@ -2,6 +2,8 @@ import * as request from "superagent";
 import { url } from "./constants";
 
 export const ALL_ROOMS = "ALL_ROOMS";
+export const CORRECT = 'CORRECT'
+export const WRONG = 'WRONG'
 
 export function allRooms(payload) {
   return {
@@ -34,4 +36,19 @@ export function login(name, password) {
         console.log(error);
       });
   };
+}
+
+
+export function correct(goodAnswer) {
+  return {
+    type: CORRECT,
+    payload: goodAnswer
+  }
+}
+
+export function wrong(wrongAnswer) {
+  return {
+    type: WRONG,
+    payload: wrongAnswer
+  }
 }
