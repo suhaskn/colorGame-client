@@ -2,7 +2,7 @@ import * as request from "superagent";
 
 export const ALL_ROOMS = "ALL_ROOMS";
 
-export function allChannels(payload) {
+export function allRooms(payload) {
   return {
     type: ALL_ROOMS,
     payload
