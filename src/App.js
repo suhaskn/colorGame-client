@@ -5,7 +5,7 @@ import DisplayLogin from "./components/DisplayLogin";
 import GameContainer from "./components/GameContainer";
 import ButtonListContainer from "./components/ButtonListContainer";
 import DisplaySignUp from "./components/DisplaySignUp";
-import DisplayRooms from "./components/DisplayRooms";
+import CreateRoom from "./components/CreateRoom";
 
 export default class App extends React.Component {
   render() {
@@ -15,7 +15,7 @@ export default class App extends React.Component {
         <ButtonListContainer />
         <Route exact path="/signup" component={DisplaySignUp} />
         <Route exact path="/login" component={DisplayLogin} />
-        <Route exact path="/room" component={DisplayRooms} />
+        <Route exact path="/room" component={CreateRoom} />
         <Route exact path="/start" component={GameContainer} />
       </div>
     );
