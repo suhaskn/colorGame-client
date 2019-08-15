@@ -40,6 +40,7 @@ export function login(name, password) {
 
 
 export function correct(goodAnswer) {
+  console.log('correct action')
   return {
     type: CORRECT,
     payload: goodAnswer
@@ -47,6 +48,7 @@ export function correct(goodAnswer) {
 }
 
 export function wrong(wrongAnswer) {
+  console.log('wrong action')
   return {
     type: WRONG,
     payload: wrongAnswer

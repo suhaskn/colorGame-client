@@ -1,59 +1,48 @@
 import React from "react";
-import { correct } from "../actions"
-import { wrong } from "../actions"
+import { correct, wrong } from "../actions"
+import { connect } from 'react-redux'
 
-export default class GameContainer extends React.Component {
+class GameContainer extends React.Component {
 
-
-
-
-  handleClick = event => {
+  handleClick = (event) => {
     let color = ["red", "blue", "yellow", "green"];
-    let cAnswer = 0
-    let wAnswer = 0
-    console.log(cAnswer)
-    console.log(wAnswer)
+
     for (let i = color.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [color[i], color[j]] = [color[j], color[i]];
     }
     const p1 = document.getElementById("p1");
+    document.getElementsByClassName("sucessRate")
 
     if (p1.style.color === event.target.value) {
-      //console.log('correct')
-      console.log('correct variable', correct)
-      cAnswer = cAnswer + 1
-      console.log('cAnswer', cAnswer)
+      this.props.correct(event.target.value)
     }
     else {
-      //console.log('wrong')
-      console.log('wrong variable', wrong)
-      wAnswer = wAnswer + 1
+      this.props.wrong(event.target.value)
     }
+
     const word = color[0];
     const newColor = color[1];
     p1.textContent = word;
     p1.style.color = newColor;
-
   };
 
-
   render() {
-
-    console.log('correct')
-    const sucessRate = Math.floor(this.cAnswer / (this.cAnswer + this.wAnswer) * 100)
-
     var pStyle = {
       color: "red",
       fontSize: "100px",
       fontWeight: "bold"
     };
 
+    const { goodAnswer, wrongAnswer } = this.props
+    const sucessRate = Math.floor(goodAnswer.length / (goodAnswer.length + wrongAnswer.length) * 100)
+
     return (
       <div>
         <h2>FAST!!! Pick the right color</h2>
-        <h3>Score: {!sucessRate ? '0' : sucessRate}%</h3>
-
+        <div className='sucessRate'>
+          You scored: {!sucessRate ? '0' : sucessRate}%
+        </div>
         <div>
           <p id="p1" style={pStyle}>
             {"yellow"}
@@ -67,3 +56,15 @@ export default class GameContainer extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = { correct, wrong }
+
+const mapStateToProps = (state) => ({
+  goodAnswer: state.game.goodAnswer,
+  wrongAnswer: state.game.wrongAnswer
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GameContainer);
