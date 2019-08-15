@@ -13,15 +13,16 @@ class DisplayLogin extends React.Component {
 
     const { name, password } = this.state;
 
-    this.props.login({ name, password });
+    console.log("Name: ", name, " Password: ", password);
+    //this.props.login({ name, password });
 
     this.setState({ name: "", password: "" });
   };
 
   onChange = event => {
-    const { value } = event.target;
+    const { value, name } = event.target;
 
-    this.setState({ name: value });
+    this.setState({ [name]: value });
   };
 
   render() {
@@ -32,9 +33,21 @@ class DisplayLogin extends React.Component {
         <div>
           <form onSubmit={this.onSubmit}>
             <p>Name:</p>
-            <input type="text" value="name" onChange={this.onChange} />
+            <input
+              type="text"
+              value={this.state.name}
+              placeholder="name"
+              name="name"
+              onChange={this.onChange}
+            />
             <p>Password:</p>
-            <input type="text" value="password" onChange={this.onChange} />
+            <input
+              type="password"
+              value={this.state.password}
+              placeholder="password"
+              name="password"
+              onChange={this.onChange}
+            />
             <br />
             <button type="submit">Submit</button>
           </form>
