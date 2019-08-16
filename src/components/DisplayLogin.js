@@ -1,5 +1,5 @@
 import React from "react";
-import { login } from "../actions";
+import { login, newName } from "../actions";
 import { connect } from "react-redux";
 
 class DisplayLogin extends React.Component {
@@ -12,7 +12,7 @@ class DisplayLogin extends React.Component {
     event.preventDefault();
 
     const { name, password } = this.state;
-
+    this.props.newName(name);
     console.log("Name: ", name, " Password: ", password);
     this.props.login(name, password);
 
@@ -58,10 +58,15 @@ class DisplayLogin extends React.Component {
 }
 
 const mapDispatchToProps = {
-  login
+  login,
+  newName
 };
 
+const mapStateToProps = state => ({
+  user: state.user
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(DisplayLogin);
