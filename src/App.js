@@ -31,6 +31,7 @@ class App extends React.Component {
         <Route exact path="/signup" component={DisplaySignUp} />
         <Route exact path="/login" component={DisplayLogin} />
         <Route exact path="/room" component={DisplayRooms} />
+        <Route exact path="/room/:id" component={GameContainer} />
         <Route exact path="/start" component={GameContainer} />
       </div>
     );
