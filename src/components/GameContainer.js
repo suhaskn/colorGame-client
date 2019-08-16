@@ -1,28 +1,44 @@
 import React from "react";
 import { correct, wrong } from "../actions";
 import { connect } from "react-redux";
+import { url } from "../constants";
+import * as request from "superagent";
 
 class GameContainer extends React.Component {
   handleClick = event => {
-    let color = ["red", "blue", "yellow", "green"];
+    // let color = ["red", "blue", "yellow", "green"];
 
-    for (let i = color.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [color[i], color[j]] = [color[j], color[i]];
-    }
-    const p1 = document.getElementById("p1");
-    document.getElementsByClassName("sucessRate");
+    // for (let i = color.length - 1; i > 0; i--) {
+    //   const j = Math.floor(Math.random() * (i + 1));
+    //   [color[i], color[j]] = [color[j], color[i]];
+    // }
+    // const p1 = document.getElementById("p1");
+    // document.getElementsByClassName("sucessRate");
 
-    if (p1.style.color === event.target.value) {
-      this.props.correct(event.target.value);
-    } else {
-      this.props.wrong(event.target.value);
-    }
+    // if (p1.style.color === event.target.value) {
+    //   this.props.correct(event.target.value);
+    // } else {
+    //   this.props.wrong(event.target.value);
+    // }
 
-    const word = color[0];
-    const newColor = color[1];
-    p1.textContent = word;
-    p1.style.color = newColor;
+    // const word = color[0];
+    // const newColor = color[1];
+    // p1.textContent = word;
+    // p1.style.color = newColor;
+    const userGuess = event.target.value;
+
+    const { jwt } = this.props;
+
+    request
+      .put(`${url}/room/guess/1`)
+      .send({ jwt, userGuess })
+      .then(response => {
+        console.log("response test:", response);
+      })
+      .catch(error => {
+        console.log("Something is wrong");
+        console.log(error);
+      });
   };
 
   render() {
@@ -44,6 +60,10 @@ class GameContainer extends React.Component {
         {/* <h3>{this.props.user}</h3> */}
         <div className="sucessRate">
           You scored: {!sucessRate ? "0" : sucessRate}%
+        </div>
+        <div>
+          <label id="pointsTag">Points: </label>
+          <label id="pointsLabel">{"0"}</label>
         </div>
         <div>
           <p id="p1" style={pStyle}>
@@ -72,7 +92,8 @@ const mapDispatchToProps = { correct, wrong };
 const mapStateToProps = state => ({
   goodAnswer: state.game.goodAnswer,
   wrongAnswer: state.game.wrongAnswer,
-  user: state.userName
+  user: state.userName,
+  jwt: state.userToken.jwt
 });
 
 export default connect(
