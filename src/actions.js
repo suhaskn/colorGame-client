@@ -2,6 +2,9 @@ import * as request from "superagent";
 import { url } from "./constants";
 
 export const ALL_ROOMS = "ALL_ROOMS";
+export const CORRECT = "CORRECT";
+export const WRONG = "WRONG";
+export const NEW_NAME = "NEW_NAME";
 
 export function allRooms(payload) {
   return {
@@ -9,6 +12,7 @@ export function allRooms(payload) {
     payload
   };
 }
+
 
 // export const JOIN_ROOM = 'JOIN_ROOM';
 
@@ -18,6 +22,14 @@ export function allRooms(payload) {
 //     payload: room 
 //   }
 // }
+
+export function newName(payload) {
+  return {
+    type: NEW_NAME,
+    payload
+  };
+}
+
 
 export const JWT = "JWT";
 
@@ -34,10 +46,29 @@ export function login(name, password) {
       .post(`${url}/login`)
       .send({ name, password })
       .then(response => {
-        // You may want to handle the case where the response is not the JWT
-        // in case the name or password were wrong
         const action = jwt(response.body);
+        console.log(response.body);
         dispatch(action);
+      })
+      .catch(error => {
+        console.log("Something is wrong with the log in");
+        console.log(error);
       });
+  };
+}
+
+export function correct(goodAnswer) {
+  console.log("correct action");
+  return {
+    type: CORRECT,
+    payload: goodAnswer
+  };
+}
+
+export function wrong(wrongAnswer) {
+  console.log("wrong action");
+  return {
+    type: WRONG,
+    payload: wrongAnswer
   };
 }
