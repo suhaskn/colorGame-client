@@ -1,6 +1,7 @@
 import React from "react";
 import { login, newName } from "../actions";
 import { connect } from "react-redux";
+import './DisplayLogin.css';
 
 class DisplayLogin extends React.Component {
   state = {
@@ -27,7 +28,7 @@ class DisplayLogin extends React.Component {
 
   render() {
     return (
-      <div>
+      <div class="login">
         <h2>Log In with name and password</h2>
 
         <div>
@@ -49,7 +50,7 @@ class DisplayLogin extends React.Component {
               onChange={this.onChange}
             />
             <br />
-            <button type="submit">Submit</button>
+            <button class="btn submit"type="submit">Submit</button>
           </form>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import * as request from "superagent";
 import { url } from "../constants";
+import "./DisplaySignUp.css"
 
 export default class DisplaySignUp extends React.Component {
   state = {
@@ -30,7 +31,7 @@ export default class DisplaySignUp extends React.Component {
 
   render() {
     return (
-      <div>
+      <div class="signup">
         <h2>Please register with user name and password</h2>
 
         <div>
@@ -52,7 +53,7 @@ export default class DisplaySignUp extends React.Component {
               onChange={this.onChange}
             />
             <br />
-            <button type="submit">Submit</button>
+            <button class="btn done" type="submit">Submit</button>
           </form>
         </div>
       </div>

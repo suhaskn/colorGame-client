@@ -1,4 +1,7 @@
 import React from "react";
+
+import './DisplayRooms.css'
+
 import { connect } from "react-redux";
 import CreateRoom from "./CreateRoom";
 import { Link } from "react-router-dom";
@@ -20,6 +23,7 @@ class DisplayRooms extends React.Component {
         <div>{rooms}</div>
       </div>
     );
+
   }
 }
 

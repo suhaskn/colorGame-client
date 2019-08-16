@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import "./ButtonListContainer.css";
 
 export default class ButtonListContainer extends Component {
   render() {
@@ -8,7 +9,7 @@ export default class ButtonListContainer extends Component {
       fontWeight: "bold"
     };
     return (
-      <div style={{ flexDirection: "row" }}>
+      <div class="menu" style={{ flexDirection: "row" }}>
         <NavLink to="/signup">
           <label style={style}>Sign Up</label>
         </NavLink>

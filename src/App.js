@@ -10,6 +10,7 @@ import { url } from "./constants";
 import { connect } from "react-redux";
 import { allRooms } from "./actions";
 
+
 class App extends React.Component {
   source = new EventSource(`${url}/stream`);
 
@@ -17,21 +18,24 @@ class App extends React.Component {
     this.source.onmessage = event => {
       const rooms = JSON.parse(event.data);
 
-      console.log("rooms test:", rooms);
 
-      this.props.allRooms(rooms);
-    };
+      //console.log('rooms test:', rooms)
+      this.props.allRooms(rooms)
+    }
+
   }
 
   render() {
     return (
       <div className="App">
-        <h1>Color Game</h1>
+        <p class="logo"></p>
         <ButtonListContainer />
         <Route exact path="/signup" component={DisplaySignUp} />
         <Route exact path="/login" component={DisplayLogin} />
         <Route exact path="/room" component={DisplayRooms} />
+
         <Route exact path="/room/:id" component={GameContainer} />
+
         <Route exact path="/start" component={GameContainer} />
       </div>
     );

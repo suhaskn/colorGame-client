@@ -13,12 +13,23 @@ export function allRooms(payload) {
   };
 }
 
+
+// export const JOIN_ROOM = 'JOIN_ROOM';
+
+// export function joinRoom(payload) {
+//   return {
+//     type: JOIN_ROOM,
+//     payload: room 
+//   }
+// }
+
 export function newName(payload) {
   return {
     type: NEW_NAME,
     payload
   };
 }
+
 
 export const JWT = "JWT";
 

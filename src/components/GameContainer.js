@@ -1,4 +1,5 @@
 import React from "react";
+import './GameContainer.css'
 import { correct, wrong } from "../actions";
 import { connect } from "react-redux";
 import { url } from "../constants";
@@ -8,6 +9,7 @@ function GameView({ handleClick, room }) {
   if (room) {
     var style = {
       color: room.color,
+
       fontSize: "100px",
       fontWeight: "bold"
     };
@@ -21,13 +23,16 @@ function GameView({ handleClick, room }) {
     });
 
     return (
+
       <div>
         <div className="sucessRate">
           <h4>Points</h4>
           {points}
         </div>
+
         <h2>FAST!!! Pick the right color</h2>
         <div>
+
           <label id="pointsTag">Points: </label>
           <label id="pointsLabel">{"0"}</label>
         </div>
@@ -48,6 +53,7 @@ function GameView({ handleClick, room }) {
           <button value="green" onClick={handleClick}>
             GREEN
           </button>
+
         </div>
       </div>
     );
