@@ -3,7 +3,7 @@ import * as request from "superagent";
 import { url } from "../constants";
 import { allRooms } from "../actions";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import './CreateRoom.css'
 
 class CreateRoom extends React.Component {
   state = { room_name: '' }
@@ -32,7 +32,7 @@ class CreateRoom extends React.Component {
 
   render() {
     return (
-      <div>
+      <div class="makeroom"> 
         <h2> Make a room </h2>
 
         <div>
@@ -45,7 +45,7 @@ class CreateRoom extends React.Component {
               value={this.state.room_name}
               placeholder={'Name of your room'}
               onChange={this.onChange} />
-            <button type="submit"> Add Room </button>
+            <button class="btn click" type="submit"> Add Room </button>
           </form>
         </div>
         {/* <Link to={`${url}/room/1`}>

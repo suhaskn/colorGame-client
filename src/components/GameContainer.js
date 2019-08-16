@@ -1,4 +1,5 @@
 import React from "react";
+import './GameContainer.css'
 //import { url } from "../constants";
 
 export default class GameContainer extends React.Component {
@@ -24,18 +25,18 @@ export default class GameContainer extends React.Component {
     };
 
     return (
-      <div>
+      <div class="game">
         <h2>FAST!!! Pick the right color</h2>
         <h3>Score: </h3>
 
         <div>
-          <p id="p1" style={pStyle}>
+          <p class="word" id="p1" style={pStyle}>
             {"yellow"}
           </p>
-          <button onClick={this.handleClick}>RED</button>
-          <button onClick={this.handleClick}>BLUE</button>
-          <button onClick={this.handleClick}>YELLOW</button>
-          <button onClick={this.handleClick}>GREEN</button>
+          <button class="btn red" onClick={this.handleClick}>RED</button>
+          <button class="btn blue" onClick={this.handleClick}>BLUE</button>
+          <button class="btn yellow" onClick={this.handleClick}>YELLOW</button>
+          <button class="btn green" onClick={this.handleClick}>GREEN</button>
         </div>
       </div>
     );

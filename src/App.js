@@ -10,6 +10,7 @@ import { url } from './constants'
 import { connect } from 'react-redux'
 import { allRooms } from './actions'
 
+
 class App extends React.Component {
   source = new EventSource(`${url}/stream`)
 
@@ -25,7 +26,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1>Color Game</h1>
+        <p class="logo"></p>
         <ButtonListContainer />
         <Route exact path="/signup" component={DisplaySignUp} />
         <Route exact path="/login" component={DisplayLogin} />

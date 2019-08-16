@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
 import CreateRoom from './CreateRoom';
+import './DisplayRooms.css'
 
 class DisplayRooms extends React.Component {
   onClick = (event) => {
@@ -16,14 +17,14 @@ class DisplayRooms extends React.Component {
       .rooms
       .map(room => 
       <div key={room.id}> 
-        <button
+        <button class="btn joingame"
           id= {room.id}
           key={room.id}
           name={'/room'}
           onClick={this.onClick} > Join the game {room.room_name} </button>
       </div>)
 
-    return <div>
+    return <div class="join">
       <CreateRoom />
         {rooms}
     </div>

@@ -1,0 +1,29 @@
+.signup{
+  color: whitesmoke;
+  font-weight: bold;
+}
+
+.btn {
+  /* flex: 1 1 auto; */
+  margin: 18px;
+  padding: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  /* background-size: 200% auto; */
+  color: whitesmoke;
+  font-weight: bold;
+  -webkit-text-stroke-width: 0.25px;
+  -webkit-text-stroke-color: black;
+ /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 10px #eee;
+  border-radius: 10px;
+ }
+
+ .btn:hover {
+  background-position: right center; /* change the direction of the change here */
+}
+
+.done {
+  background-image: linear-gradient(to right, #ff00b7 0%, #74a5f8 51%, #fbc2eb 100%);
+}
