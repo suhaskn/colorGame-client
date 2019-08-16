@@ -1,6 +1,8 @@
 import React from "react";
+//import { url } from "../constants";
 
 export default class GameContainer extends React.Component {
+
   handleClick = event => {
     let color = ["red", "blue", "yellow", "green"];
     for (let i = color.length - 1; i > 0; i--) {

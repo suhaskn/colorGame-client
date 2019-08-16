@@ -48,11 +48,11 @@ class CreateRoom extends React.Component {
             <button type="submit"> Add Room </button>
           </form>
         </div>
-        <Link to={`${url}/room/1`}>
+        {/* <Link to={`${url}/room/1`}>
           <button type="button"> 
             Join the Room
           </button> 
-        </Link>
+        </Link> */}
       </div>
     );
   }
