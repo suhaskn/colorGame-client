@@ -17,8 +17,7 @@ class App extends React.Component {
     this.source.onmessage = (event) => {
       const rooms = JSON.parse(event.data)
 
-      console.log('rooms test:', rooms)
-
+      //console.log('rooms test:', rooms)
       this.props.allRooms(rooms)
     }
   }

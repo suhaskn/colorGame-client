@@ -1,10 +1,11 @@
 import React from "react";
-import { connect } from 'react-redux'
-import CreateRoom from './CreateRoom'
+import { connect } from 'react-redux';
+import CreateRoom from './CreateRoom';
+//import EnterRoom from "./EnterRoom";
 
 class DisplayRooms extends React.Component {
   render () {
-    console.log('this.props test:', this.props)
+    //console.log('this.props test:', this.props)
     const rooms = this
       .props
       .rooms
@@ -14,6 +15,7 @@ class DisplayRooms extends React.Component {
         to={'/room'}
       >
         <div>{room.room_name}</div>
+        
       </div>)
 
     console.log('rooms test:', rooms)
@@ -22,6 +24,7 @@ class DisplayRooms extends React.Component {
       <CreateRoom />
       <div>
         {rooms}
+        
       </div>
     </div>
   }
