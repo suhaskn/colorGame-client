@@ -2,12 +2,20 @@ import * as request from "superagent";
 import { url } from "./constants";
 
 export const ALL_ROOMS = "ALL_ROOMS";
-export const CORRECT = 'CORRECT'
-export const WRONG = 'WRONG'
+export const CORRECT = "CORRECT";
+export const WRONG = "WRONG";
+export const NEW_NAME = "NEW_NAME";
 
 export function allRooms(payload) {
   return {
     type: ALL_ROOMS,
+    payload
+  };
+}
+
+export function newName(payload) {
+  return {
+    type: NEW_NAME,
     payload
   };
 }
@@ -38,19 +46,18 @@ export function login(name, password) {
   };
 }
 
-
 export function correct(goodAnswer) {
-  console.log('correct action')
+  console.log("correct action");
   return {
     type: CORRECT,
     payload: goodAnswer
-  }
+  };
 }
 
 export function wrong(wrongAnswer) {
-  console.log('wrong action')
+  console.log("wrong action");
   return {
     type: WRONG,
     payload: wrongAnswer
-  }
+  };
 }
